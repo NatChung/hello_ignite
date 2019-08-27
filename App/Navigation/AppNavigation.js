@@ -15,4 +15,4 @@ const PrimaryNav = createStackNavigator({
   }
 })
 
-export default createAppContainer(PrimaryNav)
+export default PrimaryNav
