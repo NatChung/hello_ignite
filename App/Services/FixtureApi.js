@@ -20,5 +20,9 @@ export default {
       ok: true,
       data: username.toLowerCase() === 'gantman' ? gantmanData : skellockData
     }
-  }
+  },
+  getCommens: () => ({
+    ok: true,
+    data: require('../Fixtures/comments.json')
+  })
 }

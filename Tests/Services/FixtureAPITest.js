@@ -38,3 +38,12 @@ test('FixtureAPI getUser returns the right file for skellock as default', () => 
     data: expectedFile
   })
 })
+
+test('FixtureAPI getUser returns the right file for skellock as default', () => {
+  const coments = require('../../App/Fixtures/comments.json')
+
+  expect(FixtureAPI.getCommens('')).toEqual({
+    ok: true,
+    data: require('../../App/Fixtures/comments.json')
+  })
+})

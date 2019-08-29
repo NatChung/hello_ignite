@@ -6,8 +6,8 @@ import Immutable from 'seamless-immutable'
 const { Types, Creators } = createActions({
   numberRequest: ['data'],
   numberSuccess: ['payload'],
-  numberFailure: null,
-  numberIncrease: null
+  numberFailure: ['error'],
+  numberIncrease: null,
 })
 
 export const NumberTypes = Types
@@ -18,8 +18,8 @@ export default Creators
 export const INITIAL_STATE = Immutable({
   data: null,
   fetching: null,
-  payload: null,
-  error: null,
+  payload: [],
+  error: null,  
   number: 0,
 })
 
@@ -42,13 +42,10 @@ export const success = (state, action) => {
 }
 
 // Something went wrong somewhere.
-export const failure = state =>
-  state.merge({ fetching: false, error: true, payload: null })
+export const failure = (state, {error}) =>
+  state.merge({ fetching: false, error, payload: null })
 
-export const increase = state => {
-  let {number = 0} = state
-  return state.merge({number:number+1})
-}
+export const increase = state => state.merge({number: state.number+1})
 
 /* ------------- Hookup Reducers To Types ------------- */
 
